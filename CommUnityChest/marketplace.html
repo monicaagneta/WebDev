@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CommUnityChest - Free Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body class="marketplace-page">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-box-open"></i>
+                <h1>CommUnityChest</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="marketplace.html" class="active">Marketplace</a></li>
+                    <li><a href="services.html">Service Exchange</a></li>
+                    <li><a href="resources.html">Resource Library</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h2>Free Marketplace</h2>
+                <p>Give freely, Take what you need</p>
+                <button class="btn" id="createListingBtn">Create New Listing</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="filters" id="filters"> 
+        <div class="container">
+            <div class="filter-controls"> <!--dropdown of search categories-->
+                <div class="filter-group">
+                    <label for="categoryFilter">Category:</label>
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        <option value="food">Food & Groceries</option>
+                        <option value="furniture">Furniture</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="household">Household Items</option>
+                        <option value="baby">Baby & Kids</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="search-group"> <!--search by text-->
+                    <input type="text" id="searchInput" placeholder="Search listings...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="marketplace-listings" id="listings">
+        <div class="container">
+            <h2>Available Items</h2>
+            <div class="listings-grid">
+                <div class="listing-card" data-category="food">
+                    <div class="listing-image">
+                        <img src="images/cans.jpg" alt="Assorted canned foods"> <!--Image by <a href="https://pixabay.com/users/klimkin-1298145/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1057209">svklimkin</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1057209">Pixabay</a>-->
+                    </div>
+                    <div class="listing-content">
+                        <span class="listing-category">Food & Groceries</span>
+                        <h3>Canned Foods Assortment</h3>
+                        <p>10 cans of various soups, beans, and vegetables. All unexpired.</p>
+                        <div class="listing-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Downtown</span>
+                            <span><i class="fas fa-calendar"></i> Posted 2 days ago</span>
+                        </div>
+                        <button class="btn-small contact-btn">I'm Interested</button>
+                    </div>
+                </div>
+                
+                <div class="listing-card" data-category="furniture">
+                    <div class="listing-image">
+                        <img src="images/chair.jpg" alt="Orange linen lounge chair in living room"> <!--Image by <a href="https://pixabay.com/users/hans-2/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=270980">Hans</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=270980">Pixabay</a>-->
+                    </div>
+                    <div class="listing-content">
+                        <span class="listing-category">Furniture</span>
+                        <h3>Lounge Chair</h3>
+                        <p>Orange linen living room chair in mint condition.</p>
+                        <div class="listing-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Westside</span>
+                            <span><i class="fas fa-calendar"></i> Posted yesterday</span>
+                        </div>
+                        <button class="btn-small contact-btn">I'm Interested</button>
+                    </div>
+                </div>
+                
+                
+                <div class="listing-card" data-category="baby">
+                    <div class="listing-image">
+                        <img src="images/clothes.jpg" alt="Baby clothes and shoes"> <!--Image by <a href="https://pixabay.com/users/sebagee-154213/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=505471">Sebastian</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=505471">Pixabay</a>-->
+                    </div>
+                    <div class="listing-content">
+                        <span class="listing-category">Baby & Kids</span>
+                        <h3>Baby Clothes (0-12 months)</h3>
+                        <p>Gently used baby clothes for 0-12 months. All washed and in good condition.</p>
+                        <div class="listing-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Downtown</span>
+                            <span><i class="fas fa-calendar"></i> Posted 1 day ago</span>
+                        </div>
+                        <button class="btn-small contact-btn">I'm Interested</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal to create a listing-->
+    <div id="listingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create a New Marketplace Listing</h2>
+            <form id="listingForm">
+                <div class="form-group">
+                    <label for="itemTitle">Item Title:</label>
+                    <input type="text" id="itemTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemCategory">Category:</label>
+                    <select id="itemCategory" required>
+                        <option value="">Select a category</option>
+                        <option value="food">Food & Groceries</option>
+                        <option value="furniture">Furniture</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="household">Household Items</option>
+                        <option value="baby">Baby & Kids</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="itemDescription">Description:</label>
+                    <textarea id="itemDescription" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="itemLocation">Neighborhood/Area:</label>
+                    <input type="text" id="itemLocation" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactName">Your Name:</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email:</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">Phone (optional):</label>
+                    <input type="tel" id="contactPhone">
+                </div>
+                <div class="form-group">
+                    <label for="itemImage">Upload Image (optional):</label>
+                    <input type="file" id="itemImage" accept="image/*">
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="agreeTerms" required>
+                    <label for="agreeTerms">I agree to the community guidelines and understand this information will be visible to other community members.</label>
+                </div>
+                <button type="submit" class="btn">Post Listing</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal to fill out form with contact information -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close contact-close">&times;</span>
+            <h2>Express Interest in Item</h2>
+            <p id="contactItemName">Item: <strong>Item Name</strong></p>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contactFormName">Your Name:</label>
+                    <input type="text" id="contactFormName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactFormEmail">Email:</label>
+                    <input type="email" id="contactFormEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactFormPhone">Phone (optional):</label>
+                    <input type="tel" id="contactFormPhone">
+                </div>
+                <div class="form-group">
+                    <label for="contactFormMessage">Message (optional):</label>
+                    <textarea id="contactFormMessage" rows="3" placeholder="Let them know when you're available to pick up, or any other relevant information."></textarea>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="contactAgreeTerms" required>
+                    <label for="contactAgreeTerms">I agree to the community guidelines and understand my contact information will be shared with the item owner.</label>
+                </div>
+                <button type="submit" class="btn">Send Contact Information</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal that sends success message when posted -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-content">
+            <span class="close success-close">&times;</span>
+            <i class="fas fa-check-circle success-icon"></i>
+            <h2>Success!</h2>
+            <p id="successMessage">Your listing has been posted successfully.</p>
+            <button class="btn close-success-btn">Close</button>
+        </div>
+    </div>
+
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-box-open"></i>
+                    <h2>CommUnityChest</h2>
+                </div>
+                <div class="footer-links">
+                    <h3>Site Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="marketplace.html">Marketplace</a></li>
+                        <li><a href="services.html">Service Exchange</a></li>
+                        <li><a href="resources.html">Resource Library</a></li>
+                    </ul>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 CommUnityChest – Building Community Beyond Capitalism</p>
+                </div>
+            </div>    
+        </div>      
+    </footer>  
+
+    <script src="dist/CommUnityChest.js"></script>
+
+</body>
+</html>

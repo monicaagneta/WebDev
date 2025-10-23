@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CommUnityChest - Service Exchange</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body class="services-page">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-box-open"></i>
+                <h1>CommUnityChest</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="marketplace.html">Marketplace</a></li>
+                    <li><a href="services.html" class="active">Service Exchange</a></li>
+                    <li><a href="resources.html">Resource Library</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h2>Service Exchange</h2>
+                <p>Trade skills and services with neighbors</p>
+                <button class="btn" id="createServiceBtn">Create Service Exchange</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="filters" id="filters">
+        <div class="container">
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="serviceCategory">Category:</label>
+                    <select id="serviceCategory">
+                        <option value="all">All Categories</option>
+                        <option value="home">Home & Repairs</option>
+                        <option value="professional">Professional Skills</option>
+                        <option value="education">Education & Tutoring</option>
+                        <option value="tech">Tech Support</option>
+                        <option value="other">Other Services</option>
+                    </select>
+                </div>
+                <div class="search-group">
+                    <input type="text" id="searchInput" placeholder="Search services...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Create Service Exchange Modal -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create a Service Exchange</h2>
+            <form id="serviceForm">
+                <div class="form-group">
+                    <label for="serviceTitle">Service Title:</label>
+                    <input type="text" id="serviceTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="serviceCategory">Category:</label>
+                    <select id="serviceFormCategory" required>
+                        <option value="">Select a category</option>
+                        <option value="home">Home & Repairs</option>
+                        <option value="professional">Professional Skills</option>
+                        <option value="creative">Creative & Artistic</option>
+                        <option value="education">Education & Tutoring</option>
+                        <option value="wellness">Health & Wellness</option>
+                        <option value="tech">Tech Support</option>
+                        <option value="other">Other Services</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="serviceOffering">Service You're Offering:</label>
+                    <textarea id="serviceOffering" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="serviceSeeking">Service You're Seeking:</label>
+                    <textarea id="serviceSeeking" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="serviceLocation">Neighborhood/Area:</label>
+                    <input type="text" id="serviceLocation" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactName">Your Name:</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email:</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">Phone (optional):</label>
+                    <input type="tel" id="contactPhone">
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="agreeTerms" required>
+                    <label for="agreeTerms">I agree to the community guidelines and understand this information will be visible to other community members.</label>
+                </div>
+                <button type="submit" class="btn">Post Service Exchange</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close contact-close">&times;</span>
+            <h2>Express Interest in Service</h2>
+            <p id="contactServiceName">Service: <strong>Service Name</strong></p>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contactFormName">Your Name:</label>
+                    <input type="text" id="contactFormName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactFormEmail">Email:</label>
+                    <input type="email" id="contactFormEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactFormPhone">Phone (optional):</label>
+                    <input type="tel" id="contactFormPhone">
+                </div>
+                <div class="form-group">
+                    <label for="contactFormMessage">Message (optional):</label>
+                    <textarea id="contactFormMessage" rows="3" placeholder="Let them know about your skills or schedule availability."></textarea>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="contactAgreeTerms" required>
+                    <label for="contactAgreeTerms">I agree to the community guidelines and understand my contact information will be shared with the service provider.</label>
+                </div>
+                <button type="submit" class="btn">Send Contact Information</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-content">
+            <span class="close success-close">&times;</span>
+            <i class="fas fa-check-circle success-icon"></i>
+            <h2>Success!</h2>
+            <p id="successMessage">Your service exchange has been posted successfully.</p>
+            <button class="btn close-success-btn">Close</button>
+        </div>
+    </div>
+
+    <section class="service-listings" id="listings">
+        <div class="container">
+            <h2>Available Service Exchanges</h2>
+            <div class="listings-grid">
+                <div class="listing-card" data-category="creative">
+                    <div class="listing-image service-listing">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <div class="listing-content">
+                        <span class="listing-category">Professional Skills</span>
+                        <h3>Haircut Services</h3>
+                        <p><strong>Offering:</strong> Professional haircuts for all hair types and styles</p>
+                        <p><strong>Seeking:</strong> Furniture building or repair help for my apartment</p>
+                        <div class="listing-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Downtown</span>
+                            <span><i class="fas fa-calendar"></i> Posted 3 days ago</span>
+                        </div>
+                        <button class="btn-small contact-btn">I'm Interested</button>
+                    </div>
+                </div>
+                
+                <div class="listing-card" data-category="home">
+                    <div class="listing-image service-listing">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <div class="listing-content">
+                        <span class="listing-category">Home & Repairs</span>
+                        <h3>Plumbing Assistance</h3>
+                        <p><strong>Offering:</strong> Basic plumbing repairs (leaky faucets, toilet fixes, etc)</p>
+                        <p><strong>Seeking:</strong> Computer tech support or website help</p>
+                        <div class="listing-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Westside</span>
+                            <span><i class="fas fa-calendar"></i> Posted yesterday</span>
+                        </div>
+                        <button class="btn-small contact-btn">I'm Interested</button>
+                    </div>
+                </div>
+                
+                <div class="listing-card" data-category="education">
+                    <div class="listing-image service-listing">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="listing-content">
+                        <span class="listing-category">Education & Tutoring</span>
+                        <h3>Math Tutoring</h3>
+                        <p><strong>Offering:</strong> Math tutoring for elementary through high school students</p>
+                        <p><strong>Seeking:</strong> Home gardening help or fresh produce</p>
+                        <div class="listing-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Southside</span>
+                            <span><i class="fas fa-calendar"></i> Posted 5 days ago</span>
+                        </div>
+                        <button class="btn-small contact-btn">I'm Interested</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-box-open"></i>
+                    <h2>CommUnityChest</h2>
+                </div>
+                <div class="footer-links">
+                    <h3>Site Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="marketplace.html">Marketplace</a></li>
+                        <li><a href="services.html">Service Exchange</a></li>
+                        <li><a href="resources.html">Resource Library</a></li>
+                    </ul>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 CommUnityChest – Building Community Beyond Capitalism</p>
+                </div>
+            </div>    
+        </div>      
+    </footer>  
+
+    <script src="dist/CommUnityChest.js"></script>
+
+</body>
+</html>

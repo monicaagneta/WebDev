@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CommUnityChest - Building Community Beyond Capitalism</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"> <!--icons toolkit-->
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-box-open"></i>
+                <h1>CommUnityChest</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="marketplace.html">Marketplace</a></li>
+                    <li><a href="services.html">Service Exchange</a></li>
+                    <li><a href="resources.html">Resource Library</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Building Community Beyond Capitalism</h2>
+            <p>CommUnityChest is a platform dedicated to fostering community connections through giving, sharing, and exchanging services.</p>
+            <div class="cta-buttons">
+                <a href="marketplace.html" class="btn">Browse Marketplace</a>
+                <a href="services.html" class="btn">Exchange Services</a>
+                <a href="resources.html" class="btn">Borrow Resources</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-box-open"></i>
+                    <h3>Free Marketplace</h3>
+                    <p>Give away items you no longer need - food, clothes, furniture, and more. Find things you need without spending money.</p>
+                    <a href="marketplace.html" class="btn-small">Visit Marketplace</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-hands"></i>
+                    <h3>Service Exchange</h3>
+                    <p>Trade skills and services with your neighbors. Offer what you can do, and get help with what you need.</p>
+                    <a href="services.html" class="btn-small">Exchange Services</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Resource Library</h3>
+                    <p>Borrow tools, toys, bikes, and other items. Share your own resources for others to use temporarily.</p>
+                    <a href="resources.html" class="btn-small">Borrow Resources</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <h2>Our Mission</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>CommUnityChest is built on the belief that communities thrive when we share resources, skills, and care for one another outside of the traditional market.</p>
+                    <p>By facilitating direct person-to-person connections, we create a space where resources can be shared, needs can be met, and community bonds can be strengthened.</p>
+                    <p>When contacting each other and exhcanging, please be safe and respectful.</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/community.jpg" alt="Community sharing" /> <!--Image by <a href="https://pixabay.com/users/henning_w-327613/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=386673">Henning Westerkamp</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=386673">Pixabay</a>-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="get-started">
+        <div class="container">
+            <h2>Get Started Today</h2>
+            <p>Join our growing community of neighbors helping neighbors. No account needed - just browse, post, and connect.</p>
+            <div class="cta-buttons">
+                <a href="marketplace.html" class="btn">Find What You Need</a>
+                <a href="#" class="btn" id="showPostModal">Give What You Can</a> <!--triggers modal for posting on a page-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for posting, visible when link clicked -->
+    <div id="postModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create a New Post</h2>
+            <div class="post-options">
+                <a href="marketplace.html#post" class="post-option">
+                    <i class="fas fa-box-open"></i>
+                    <h3>Give Away an Item</h3>
+                    <p>List an item you no longer need</p>
+                </a>
+                <a href="services.html#post" class="post-option">
+                    <i class="fas fa-hands"></i>
+                    <h3>Offer a Service</h3>
+                    <p>Share your skills with others</p>
+                </a>
+                <a href="resources.html#post" class="post-option">
+                    <i class="fas fa-tools"></i>
+                    <h3>Share a Resource</h3>
+                    <p>Let others borrow your items</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-box-open"></i>
+                    <h2>CommUnityChest</h2>
+                </div>
+                <div class="footer-links">
+                    <h3>Site Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="marketplace.html">Marketplace</a></li>
+                        <li><a href="services.html">Service Exchange</a></li>
+                        <li><a href="resources.html">Resource Library</a></li>
+                    </ul>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 CommUnityChest – Building Community Beyond Capitalism</p>
+                </div>
+            </div>    
+        </div>      
+    </footer>  
+
+    <script>
+        // Modal js functionality
+        const modal = document.getElementById("postModal");
+        const btn = document.getElementById("showPostModal");
+        const span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

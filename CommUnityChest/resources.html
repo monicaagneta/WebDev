@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CommUnityChest - Resource Library</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body class="resources-page">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-box-open"></i>
+                <h1>CommUnityChest</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="marketplace.html">Marketplace</a></li>
+                    <li><a href="services.html">Service Exchange</a></li>
+                    <li><a href="resources.html" class="active">Resource Library</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h2>Resource Library</h2>
+                <p>Borrow tools, equipment, and more from neighbors</p>
+                <button class="btn" id="createResourceBtn">Add Item to Library</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="filters" id="filters">
+        <div class="container">
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="resourceCategory">Category:</label>
+                    <select id="resourceCategory">
+                        <option value="all">All Categories</option>
+                        <option value="tools">Tools & Equipment</option>
+                        <option value="outdoor">Outdoor & Garden</option>
+                        <option value="kitchen">Kitchen Appliances</option>
+                        <option value="recreation">Recreation & Sports</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="kids">Children's Items</option>
+                        <option value="other">Other Resources</option>
+                    </select>
+                </div>
+                <div class="search-group">
+                    <input type="text" id="searchInput" placeholder="Search resources...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="resource-listings" id="listings">
+        <div class="container">
+            <h2>Available Resources</h2>
+            <div class="listings-grid">
+                <div class="listing-card" data-category="tools">
+                    <div class="listing-image">
+                        <img src="images/drill.jpg" alt="Blue cordless power drill"> <!--Image by <a href="https://pixabay.com/users/irfansyah132-15597255/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5471252">Irfan fia</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5471252">Pixabay</a>-->
+                    </div>
+                    <div class="listing-content">
+                        <span class="listing-category">Tools & Equipment</span>
+                        <h3>Power Drill Set</h3>
+                        <p>Complete power drill set with various bits and attachments.</p>
+                        <div class="listing-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Downtown</span>
+                            <span><i class="fas fa-calendar"></i> Currently Available</span>
+                        </div>
+                        <div class="resource-status available">
+                            <i class="fas fa-check-circle"></i> Available Now
+                        </div>
+                        <button class="btn-small borrow-btn">Request to Borrow</button>
+                    </div>
+                </div>
+                
+                <div class="listing-card" data-category="outdoor">
+                    <div class="listing-image">
+                        <img src="images/lawnmower.jpg" alt="Blue electric lawn mower"> <!--Image by <a href="https://pixabay.com/users/minionsquad-12098254/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4103991">Minion Squad</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4103991">Pixabay</a>-->
+                    </div>
+                    <div class="listing-content">
+                        <span class="listing-category">Outdoor & Garden</span>
+                        <h3>Lawn Mower</h3>
+                        <p>Cordless electric lawn mower in good condition.</p>
+                        <div class="listing-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Westside</span>
+                            <span><i class="fas fa-calendar"></i> Available after May 10</span>
+                        </div>
+                        <div class="resource-status unavailable">
+                            <i class="fas fa-clock"></i> Available After May 10
+                        </div>
+                        <button class="btn-small borrow-btn">Request to Borrow</button>
+                    </div>
+                </div>
+                
+                
+                <div class="listing-card" data-category="kids">
+                    <div class="listing-image">
+                        <img src="images/bike.jpg" alt="Children's pink tricycle"> <!--Image by <a href="https://pixabay.com/users/hoffmanbrin-18282997/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5571434">Brin Hoffman</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5571434">Pixabay</a>-->
+                    </div>
+                    <div class="listing-content">
+                        <span class="listing-category">Children's Items</span>
+                        <h3>Children's Tricycle</h3>
+                        <p>Kids tricycle in excellent condition with training wheels option.</p>
+                        <div class="listing-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Southside</span>
+                            <span><i class="fas fa-calendar"></i> Currently Available</span>
+                        </div>
+                        <div class="resource-status available">
+                            <i class="fas fa-check-circle"></i> Available Now
+                        </div>
+                        <button class="btn-small borrow-btn">Request to Borrow</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Create Resource Modal -->
+    <div id="resourceModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Item to Resource Library</h2>
+            <form id="resourceForm">
+                <div class="form-group">
+                    <label for="resourceTitle">Item Name:</label>
+                    <input type="text" id="resourceTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="resourceFormCategory">Category:</label>
+                    <select id="resourceFormCategory" required>
+                        <option value="">Select a category</option>
+                        <option value="tools">Tools & Equipment</option>
+                        <option value="outdoor">Outdoor & Garden</option>
+                        <option value="kitchen">Kitchen Appliances</option>
+                        <option value="recreation">Recreation & Sports</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="kids">Children's Items</option>
+                        <option value="other">Other Resources</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="resourceDescription">Description:</label>
+                    <textarea id="resourceDescription" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="resourceTerms">Borrowing Terms:</label>
+                    <textarea id="resourceTerms" rows="2" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="resourceLocation">Neighborhood/Area:</label>
+                    <input type="text" id="resourceLocation" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactName">Your Name:</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email:</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">Phone (optional):</label>
+                    <input type="tel" id="contactPhone">
+                </div>
+                <div class="form-group">
+                    <label for="resourceImage">Upload Image (optional):</label>
+                    <input type="file" id="resourceImage" accept="image/*">
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="agreeTerms" required>
+                    <label for="agreeTerms">I agree to the community guidelines and understand this information will be visible to other community members.</label>
+                </div>
+                <button type="submit" class="btn">Add to Library</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Borrow Modal -->
+    <div id="borrowModal" class="modal">
+        <div class="modal-content">
+            <span class="close borrow-close">&times;</span>
+            <h2>Request to Borrow Item</h2>
+            <p id="borrowItemName">Item: <strong>Item Name</strong></p>
+            <form id="borrowForm">
+                <div class="form-group">
+                    <label for="borrowFormName">Your Name:</label>
+                    <input type="text" id="borrowFormName" required>
+                </div>
+                <div class="form-group">
+                    <label for="borrowFormEmail">Email:</label>
+                    <input type="email" id="borrowFormEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="borrowFormPhone">Phone (optional):</label>
+                    <input type="tel" id="borrowFormPhone">
+                </div>
+                <div class="form-group">
+                    <label for="borrowDates">When do you want to borrow this item?</label>
+                    <div class="date-inputs">
+                        <div>
+                            <label for="borrowStartDate">From:</label>
+                            <input type="date" id="borrowStartDate" required>
+                        </div>
+                        <div>
+                            <label for="borrowEndDate">To:</label>
+                            <input type="date" id="borrowEndDate" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="borrowFormMessage">Message (optional):</label>
+                    <textarea id="borrowFormMessage" rows="3" placeholder="Let them know why you need the item or any other relevant details."></textarea>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="borrowAgreeTerms" required>
+                    <label for="borrowAgreeTerms">I agree to the community guidelines and understand my contact information will be shared with the item owner.</label>
+                </div>
+                <button type="submit" class="btn">Send Borrow Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-content">
+            <span class="close success-close">&times;</span>
+            <i class="fas fa-check-circle success-icon"></i>
+            <h2>Success!</h2>
+            <p id="successMessage">Your item has been added to the resource library.</p>
+            <button class="btn close-success-btn">Close</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-box-open"></i>
+                    <h2>CommUnityChest</h2>
+                </div>
+                <div class="footer-links">
+                    <h3>Site Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="marketplace.html">Marketplace</a></li>
+                        <li><a href="services.html">Service Exchange</a></li>
+                        <li><a href="resources.html">Resource Library</a></li>
+                    </ul>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 CommUnityChest – Building Community Beyond Capitalism</p>
+                </div>
+            </div>    
+        </div>      
+    </footer>  
+    
+    <script src="dist/CommUnityChest.js"></script>
+</body>
+</html>      
