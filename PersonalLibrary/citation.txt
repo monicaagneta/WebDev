@@ -1,0 +1,23 @@
+CSS help links:
+https://www.w3schools.com/css/css_grid.asp
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties
+https://www.w3schools.com/CSS/css_pseudo_elements.asp
+https://www.w3schools.com/csS/css3_box-sizing.asp
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions/Using_CSS_transitions
+https://www.w3schools.com/cssref/pr_class_display.php
+
+JS help links:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+https://www.geeksforgeeks.org/javascript-addeventlistener-with-examples/
+https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+https://www.javascripttutorial.net/web-apis/javascript-filereader/
+https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Your_first_website/Adding_interactivity
+https://www.w3schools.com/js/js_events.asp
+https://www.geeksforgeeks.org/javascript-template-literals/
+https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model
+
+Helped with planning and structure of my idea:
+https://www.codewithfaraz.com/content/213/build-a-library-management-system-using-html-css-and-javascript-source-code
+https://foolishdeveloper.com/library-management-system-using-html-css-js/
+

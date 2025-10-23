@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monica's Digital Library</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Fredoka+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-decoration"></div>
+    
+    <header>
+        <h1>Monica's Personal Library</h1>
+        <p class="tagline">My reads in digital format</p>
+        <div class="nav-buttons">
+            <a href="index.html" class="btn">
+                <i class="fas fa-home"></i> My Library
+            </a>
+            <a href="about.html" class="btn">
+                <i class="fas fa-user"></i> About the Reader
+            </a>
+            <a href="viewLibrary.html" class="btn active">
+                <i class="fas fa-book-open"></i> View Library
+            </a>
+        </div>
+    </header>
+    
+    <main>
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search your library...">
+            <select id="filter">
+                <option value="all">All Genres</option>
+                <option value="fiction">Fiction</option>
+                <option value="non-fiction">Non-Fiction</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="romance">Romance</option>
+            </select>
+        </div>
+
+        <div class="bookshelf" id="main-shelf">
+        </div>
+    </main>
+
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="book-detail">
+                <div class="book-detail-cover">
+                    <img src="" alt="Book cover" id="detail-cover">
+                    <p class="image-citation" id="detail-citation"></p>
+                </div>
+                <div class="book-detail-info">
+                    <h2 id="detail-title"></h2>
+                    <p>by <span id="detail-author"></span></p>
+                    <p>Genre: <span id="detail-genre"></span></p>
+                    <div class="detail-rating"></div>
+                    <div class="detail-actions">
+                        <button class="btn edit-btn">Edit</button>
+                        <button class="btn delete-btn">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
