@@ -1,0 +1,934 @@
+// color variables
+$primary-color: #d4a24c;       
+$secondary-color: #f9f3e3;     
+$accent-color: #9e2b25;        
+$text-color: #2b2518;         
+$background-color: #f5efe0;    
+$section-alt-bg: #ede6d6;      
+$card-bg: #fbf8f1;             
+$light-gray: #dcd6c8;         
+$dark-gray: #3c3529;           
+$box-shadow: 0 8px 20px rgba(58, 38, 14, 0.15);  
+
+// font variables
+$font-primary: 'Libre Baskerville', 'Georgia', serif;  
+$font-headings: 'Playfair Display', 'Bodoni MT', 'Didot', serif;  
+$font-accent: 'Oswald', 'Franklin Gothic Medium', sans-serif; 
+$font-size-base: 16px;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// screen width variables
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 992px;
+$large-desktop: 1200px;
+
+// defines reusable styles
+%container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+%section-padding {
+  padding: 5rem 0;
+}
+
+%vintage-border {
+  border: 2px solid $primary-color;
+  border-radius: 0; // Square corners for vintage feel
+  padding: 10px;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid $primary-color;
+    pointer-events: none;
+  }
+}
+
+%vintage-card {
+  background-color: $card-bg;
+  @extend %vintage-border;
+  padding: 2rem;
+}
+
+%section-divider {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+%diagonal-pattern {
+  @extend %section-divider;
+  background: repeating-linear-gradient(
+    -45deg,
+    $primary-color,
+    $primary-color 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+%accent-diagonal-pattern {
+  @extend %section-divider;
+  background: repeating-linear-gradient(
+    -45deg,
+    $accent-color,
+    $accent-color 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+// define mixins for common patterns of code
+@mixin flex($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin button($bg-color, $text-color) {
+  display: inline-block;
+  background-color: $bg-color;
+  color: $text-color;
+  padding: 0.6rem 1.2rem;
+  border-radius: 2px; // Less rounded corners for vintage feel
+  font-weight: $font-weight-bold;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 10px rgba(58, 38, 14, 0.15);
+  @include vintage-typography;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $box-shadow;
+  }
+}
+
+@mixin vintage-typography {
+  font-family: $font-accent;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+@mixin heading-typography {
+  font-family: $font-headings;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: $mobile) { @content; }
+  }
+  @else if $breakpoint == tablet {
+    @media (max-width: $tablet) { @content; }
+  }
+  @else if $breakpoint == desktop {
+    @media (max-width: $desktop) { @content; }
+  }
+  @else if $breakpoint == large-desktop {
+    @media (max-width: $large-desktop) { @content; }
+  }
+}
+
+// universal sizing
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// global styles
+body {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  line-height: 1.8;
+  color: $text-color;
+  background-color: $background-color;
+  // svg image used for the background pattern (found online)
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4a24c' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+}
+
+// links with hover effects
+a {
+  text-decoration: none;
+  color: $accent-color;
+  transition: all 0.3s ease;
+  font-weight: $font-weight-medium;
+  
+  &:hover {
+    color: darken($accent-color, 10%);
+    text-decoration: underline;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  filter: sepia(20%); // add filter to image
+}
+
+// header styles
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1.5rem;
+  font-weight: $font-weight-bold;
+  color: $accent-color;
+}
+
+h1 { 
+  font-size: 4.2rem; 
+  line-height: 1.1;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 0 $primary-color;
+  margin-bottom: 2rem;
+  @include heading-typography;
+}
+
+h2 { 
+  font-size: 3.2rem; 
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+  @include heading-typography;
+  
+  &::after {
+    content: '';
+    display: block;
+    width: 80%;
+    height: 3px;
+    background: $primary-color;
+    margin: 0.5rem 0;
+  }
+}
+
+h3 { 
+  font-size: 2.4rem; 
+  font-family: $font-accent;
+  @include vintage-typography;
+}
+
+h4 { 
+  font-size: 1.8rem; 
+  font-style: italic;
+  @include heading-typography;
+}
+
+h5 { font-size: 1.5rem; }
+h6 { font-size: 1.2rem; }
+
+// defines layout
+.container {
+  @extend %container;
+}
+
+// header styled with effects
+header {
+  background-color: $card-bg;
+  border-bottom: 3px solid $primary-color;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  
+  nav {
+    @include flex(row, space-between, center);
+    padding: 1rem 0;
+    
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      @include heading-typography;
+      color: $accent-color;
+      text-shadow: 1px 1px 0 $primary-color;
+    }
+    
+    .nav-links {
+      @include flex(row, flex-end, center);
+      
+      li {
+        margin-left: 2rem;
+        
+        a {
+          padding: 0.5rem 1rem;
+          transition: all 0.3s ease;
+          font-weight: $font-weight-medium;
+          @include vintage-typography;
+          position: relative;
+          
+          &::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: $accent-color;
+            transition: all 0.3s ease;
+          }
+          
+          &:hover, &.active {
+            color: $accent-color;
+            
+            &::after {
+              width: 80%;
+              left: 10%;
+            }
+          }
+        }
+      }
+    }
+    
+    // defines mobile menu with toggle animation
+    .burger {
+      display: none;
+      cursor: pointer;
+      
+      div {
+        width: 25px;
+        height: 3px;
+        background-color: $accent-color;
+        margin: 5px;
+        transition: all 0.3s ease;
+      }
+      
+      &.toggle {
+        .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+        .line2 { opacity: 0; }
+        .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+      }
+    }
+  }
+}
+
+// main padding for content to fill height
+main {
+  padding-top: 100px;
+  min-height: calc(100vh - 100px);
+}
+
+// vertical padding for sections
+section {
+  @extend %section-padding;
+}
+
+// section title styles with accent lines and stars
+.section-title {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  font-size: 3.5rem;
+  letter-spacing: 3px;
+  @include heading-typography;
+  color: $accent-color;
+  
+  &::before, &::after {
+    content: '★';
+    display: inline-block;
+    color: $primary-color;
+    margin: 0 15px;
+    font-size: 2rem;
+    vertical-align: middle;
+  }
+}
+
+.sub-section-title {
+  text-align: center;
+  margin: 3.5rem 0 2.5rem;
+  font-size: 2.4rem;
+  @include vintage-typography;
+}
+
+// flex box layout for profile image and text area
+.about-section {
+  background-color: $background-color;
+  position: relative;
+  
+  &::before {
+    @extend %diagonal-pattern;
+  }
+  
+  .about-content {
+    @include flex(row, space-between, flex-start);
+    gap: 4rem;
+    
+    @include responsive(tablet) {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .profile-image {
+      flex: 1;
+      max-width: 400px;
+      margin: 2rem;
+      
+      .image-container {
+        @extend %vintage-border;
+        overflow: hidden;
+        position: relative;
+        padding: 1.5rem;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, rgba($primary-color, 0.2), transparent);
+          pointer-events: none;
+        }
+        
+        img {
+          width: 100%;
+          transition: all 0.3s ease;
+          filter: sepia(30%);
+        }
+      }
+    }
+    
+    .about-text {
+      flex: 2;
+      
+      h2 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        
+        .highlight {
+          color: $accent-color; // color for highlighted text
+          position: relative;
+          
+          &::after {
+            content: ''; // creates underline
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: $primary-color; // underline color
+          }
+        }
+      }
+      
+      .profession {
+        color: $dark-gray;
+        font-weight: $font-weight-bold;
+        margin-bottom: 1.8rem;
+        font-size: 1.4rem;
+        @include vintage-typography;
+        border-bottom: 1px solid $light-gray; // divider
+        padding-bottom: 10px;
+      }
+      
+      .intro-text {
+        font-size: 1.2rem;
+        line-height: 1.8; // better for readability
+        font-style: italic;
+        margin-bottom: 2rem;
+        
+        &::first-letter {
+          font-size: 3rem; // big first letter for design
+          float: left;
+          line-height: 1;
+          margin-right: 10px;
+          color: $accent-color;
+          font-family: $font-headings;
+          font-weight: $font-weight-bold;
+        }
+      }
+      
+      .quick-info {
+        margin: 2.5rem 0;
+        padding: 2rem;
+        @extend %vintage-card; // card style
+        
+        .info-item {
+          margin-bottom: 1rem;
+          font-family: $font-primary;
+          
+          .info-label {
+            font-weight: $font-weight-bold; // bold text
+            margin-right: 0.5rem;
+            color: $accent-color; // labeles use accent color
+            @include vintage-typography;
+          }
+        }
+      }
+      
+      .social-links {
+        margin-bottom: 2rem;
+        
+        .social-link {
+          @include button($primary-color, $dark-gray); // button link style
+          margin-right: 1rem;
+          margin-bottom: 1rem;
+          border: 1px solid $dark-gray;
+        }
+      }
+      
+    }
+  }
+}
+
+// portfolio styles
+.portfolio-section {
+  background-color: $section-alt-bg; 
+  position: relative;
+  
+  &::before {
+    @extend %accent-diagonal-pattern; //diagonal pattern behind section
+  }
+  
+  .project-carousel {
+    margin-bottom: 3rem; // space below
+    
+    .project-slide {
+      padding: 1.5rem; // space within slides
+    }
+    
+    .project-card {
+      @extend %vintage-card; // card style
+      overflow: hidden;
+      
+      .project-image {
+        padding: 1rem;
+        border-bottom: 2px solid $primary-color; // line under images
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        img { // add space around images to fit container
+          max-width: 100%;
+          transition: all 0.4s ease;
+          filter: sepia(30%);
+          border: 3px solid $dark-gray;
+          padding: 0.5rem;
+        }
+      }
+      
+      .project-info {
+        padding: 2rem;
+        
+        h3 {
+          margin-bottom: 0.8rem;
+          font-size: 2rem;
+        }
+        
+        .project-category {
+          color: $dark-gray;
+          margin-bottom: 1.2rem;
+          font-size: 1.1rem;
+          @include vintage-typography;
+        }
+        
+        .project-description {
+          margin-bottom: 1.8rem;
+          font-family: $font-primary;
+          font-style: italic; // project description italicized
+        }
+        
+        .project-links {
+          @include flex(row, flex-start, center); // links horizontal
+          
+          .project-link {
+            @include button($primary-color, $dark-gray);
+            border: 1px solid $dark-gray;
+            margin-right: 1rem; // space between buttons
+          }
+        }
+      }
+    }
+  }
+  
+  // carousel dots below 
+  .slick-dots {
+    bottom: -40px;
+    
+    li {
+      button::before {
+        font-size: 12px;
+        color: $accent-color; // dot color
+        opacity: 0.3; // dots transparent when not hovered
+      }
+      
+      &.slick-active button::before {
+        opacity: 1; // darker when clicked
+      }
+    }
+  }
+  
+  .slick-prev, .slick-next {
+    width: 45px;
+    height: 45px;
+    z-index: 1;
+    
+    &::before {
+      font-size: 45px;
+      color: $accent-color; // nav arrow color
+    }
+  }
+  
+  .slick-prev { left: -50px; }
+  .slick-next { right: -50px; }
+}
+
+// skill style
+.skills-section {
+  padding: 3rem 0; // vertical padding
+  background-color: $background-color; 
+  
+  .skills-container {
+    display: grid; // grid layout
+    grid-template-columns: 1fr 1fr; // two columns
+    gap: 2.5rem; // add space
+    
+    @include responsive(tablet) {
+      grid-template-columns: 1fr; // stack columns on small screens
+    }
+    
+    .skills-category {
+      @extend %vintage-card;
+      
+      h3 {
+        text-align: center;
+        margin-bottom: 2rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 2px solid $primary-color; // border to separate
+        font-size: 2.2rem;
+        position: relative;
+      }
+      
+      .skills-list {
+        margin-bottom: 2rem; // space below skills list
+        
+        .skill-item {
+          background-color: $secondary-color;
+          padding: 1rem 1.5rem; // padding in box
+          margin-bottom: 1rem;
+          font-weight: $font-weight-medium;
+          color: $dark-gray;
+          display: flex; // layout
+          justify-content: space-between;
+          align-items: center; // center items vertically
+          transition: all 0.3s ease; // hover effect
+          border: 1px solid $primary-color;
+          @include vintage-typography;
+          
+          .remove-skill {
+            cursor: pointer; 
+            font-size: 1.2rem; // remove icon
+            color: $accent-color;
+            
+            &:hover {
+              color: darken($accent-color, 10%); // darker on hover
+            }
+          }
+        }
+      }
+      
+      .add-skill {
+        display: flex; 
+        
+        input {
+          flex: 1;
+          padding: 0.9rem;
+          border: 2px solid $primary-color;
+          outline: none;
+          font-family: $font-primary;
+          background-color: $secondary-color;
+          
+          &:focus {
+            border-color: $accent-color;
+          }
+        }
+        
+        button {
+          @include button($accent-color, $secondary-color);
+        }
+      }
+    }
+  }
+}
+
+// experience style
+.experience-section {
+  background-color: $section-alt-bg; 
+  position: relative;
+  
+  &::before {
+    @extend %diagonal-pattern; // background pattern
+  }
+  
+  .timeline-container {
+    max-width: 800px;
+    margin: 0 auto; // center timeline horizontally
+    
+    .timeline-tabs {
+      @include flex(row, center, center); // tabs displayed in a row
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+      
+      .timeline-tab {
+        @include button($secondary-color, $dark-gray); // tabs as buttons
+        font-size: 1.1rem;
+        padding: 0.9rem 1.8rem;
+        border: 1px solid $primary-color;
+        
+        &.active {
+          background-color: $accent-color;
+          color: $secondary-color;
+          border-color: $dark-gray;
+        }
+      }
+    }
+    
+    .timeline {
+      position: relative;
+      display: none;
+      
+      &.active {
+        display: block;
+      }
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 50px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: repeating-linear-gradient(
+          to bottom,
+          $primary-color 0px,
+          $primary-color 10px,
+          $accent-color 10px,
+          $accent-color 20px
+        );
+        
+        @include responsive(mobile) {
+          left: 30px; // adjust line for smaller screens
+        }
+      }
+      
+      .timeline-item {
+        position: relative;
+        margin-bottom: 2.5rem;
+        padding-left: 120px; // space for markers
+        
+        @include responsive(mobile) {
+          padding-left: 80px;
+        }
+        
+        &::before {
+          content: attr(data-year); //display date
+          position: absolute;
+          left: -30px; // date left to timeline
+          top: 0;
+          font-weight: $font-weight-bold;
+          color: $accent-color;
+          width: 70px;
+          text-align: right;
+          font-size: 1.3rem;
+          @include vintage-typography;
+          
+          @include responsive(mobile) {
+            left: -20px;
+            width: 40px;
+            font-size: 1.1rem;
+          }
+        }
+        
+        .timeline-marker {
+          position: absolute;
+          left: 50px;
+          top: 0;
+          width: 24px;
+          height: 24px;
+          background-color: $card-bg;
+          border: 3px solid $primary-color;
+          transform: translateX(-50%);
+          transition: all 0.3s ease;
+          // creates star shape for timeline marker (found online)
+          clip-path: polygon( 
+            50% 0%, 
+            61% 35%, 
+            98% 35%, 
+            68% 57%, 
+            79% 91%, 
+            50% 70%, 
+            21% 91%, 
+            32% 57%, 
+            2% 35%, 
+            39% 35%
+          );
+          
+          @include responsive(mobile) {
+            left: 30px;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      
+        .timeline-content {
+          @extend %vintage-card;
+          
+          .timeline-title {
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+            @include heading-typography;
+          }
+          
+          .timeline-subtitle {
+            color: $dark-gray;
+            font-weight: $font-weight-normal;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            @include vintage-typography;
+          }
+          
+          .timeline-details {
+            display: none; // hides details
+            padding-top: 1.2rem;
+            border-top: 2px solid $light-gray;
+            
+            ul {
+              list-style-type: disc; // bullet point list
+              padding-left: 1.8rem;
+              margin-top: 0.8rem;
+              
+              li {
+                margin-bottom: 0.8rem;
+                font-style: italic; // details italicized
+              }
+            }
+          }
+        }
+        
+        &.active, &:hover {
+          .timeline-marker {
+            background-color: $accent-color;
+            border-color: $primary-color;
+            transform: translateX(-50%) rotate(180deg); // rotates marker
+          }
+          
+          .timeline-content {
+            border-color: $accent-color;
+            
+            .timeline-details {
+              display: block; // shows details on hover
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// footer style
+footer {
+  background: $dark-gray;
+  color: $secondary-color;
+  padding: 2rem 0; // vertical padding
+  text-align: center;
+  font-family: $font-accent;
+  border-top: 5px solid $primary-color; // top border to separate
+  
+  &::before, &::after {
+    content: ''; // decorative lines above and below content
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: $primary-color;
+    margin: 0 auto; // center horizontally
+  }
+  
+  &::before { margin-bottom: 15px; }
+  &::after { margin-top: 15px; }
+  
+  a {
+    color: $primary-color;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    &:hover {
+      color: lighten($primary-color, 15%);
+    }
+  }
+}
+
+// media queries
+@include responsive(tablet) {
+  // adjust heading sizes
+  h1 { font-size: 2.8rem; }
+  h2 { font-size: 2.2rem; }
+  h3 { font-size: 1.8rem; }
+  
+  .section-title {
+    font-size: 2.5rem;
+    
+    &::before, &::after {
+      margin: 0 8px; // reduce space
+      font-size: 1.5rem;
+    }
+  }
+  
+  .burger {
+    display: block !important; // show burger nav menu
+  }
+  
+  .nav-links {
+    position: absolute;
+    right: 0;
+    top: 80px;
+    height: calc(100vh - 80px); // fill vertical space
+    width: 100%;
+    background-color: rgba($card-bg, 0.98);
+    flex-direction: column; // stack links
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 2rem;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in; // slide animation
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    
+    li {
+      margin: 1.2rem 0 !important; // vertical spacing between links
+      
+      a {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+    }
+    
+    &.nav-active {
+      transform: translateX(0%);
+    }
+  }
+  
+  .project-carousel {
+    .slick-prev { left: -20px; } // move previous button closer
+    .slick-next { right: -20px; } // move next button closer
+  }
+}
+  

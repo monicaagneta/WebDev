@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monica Agneta | Experience</title>
+    <link rel="stylesheet" href="styles.css">
+    <!--jQuery for event handling-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Monica Agneta</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">About Me</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="experience.html" class="active">Experience</a></li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="experience-section">
+            <div class="container">
+                <h1 class="section-title">My Experience</h1>
+                
+                <div class="timeline-container">
+                    <!--buttons for switching between work and education-->
+                    <div class="timeline-tabs">
+                        <button class="timeline-tab active" data-target="work">Work Experience</button>
+                        <button class="timeline-tab" data-target="education">Education</button>
+                    </div>
+                    
+                    <div class="timeline work-timeline active">
+                        <!--separate items on timeline-->
+                        <div class="timeline-item" data-year="March 2024 - Present">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Developer</h3>
+                                <h4 class="timeline-subtitle">VEMI Research Lab</h4>
+                                <div class="timeline-details">
+                                    <ul>
+                                        <li>Independently develop iOS applications for research clients, focusing on inclusive technology to enhance accessibility and usability across diverse user groups.</li>
+                                        <li>Collaborated on cross-platform projects, bridging the codebase between desktop and mobile versions to ensure seamless functionality and consistent user experience.</li>
+                                        <li>Wrote clean, efficient, and well-documented code following best practices in version control.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" data-year="May 2024 - August 2024">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Deployment Engineer Intern</h3>
+                                <h4 class="timeline-subtitle">Tyler Technologies</h4>
+                                <div class="timeline-details">
+                                    <p>Interned for both a summer and winter session</p>
+                                    <ul>
+                                        <li>Managed and executed scheduled deployment engagements for both SaaS and on-premise clients, configuring variables and server environments to ensure seamless software deployment.</li>
+                                        <li>Utilized Microsoft CRM and Okta identities for accurate configuration management, ensuring secure and efficient client access to systems.</li>
+                                        <li>Diagnosed and fixed deployment-related issues using documented Confluence processes, streamlining client setup and improving overall deployment success rates.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" data-year="August 2023 - December 2023">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Computer Science Maine Learning Assistant</h3>
+                                <h4 class="timeline-subtitle">University of Maine System</h4>
+                                <div class="timeline-details">
+                                    <ul>
+                                        <li>Supplied learning resources and conducted course material tutorials during recitation sessions to support students’ academic progress. </li>
+                                        <li>Provided one-on-one and small group tutoring to reinforce course concepts.</li>
+                                        <li>Monitored classroom behavior and supported a positive, inclusive learning environment.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline education-timeline">
+                        <div class="timeline-item" data-year="2022 - 2026">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Bachelor's Degree</h3>
+                                <h4 class="timeline-subtitle">University of Maine</h4>
+                                <div class="timeline-details">
+                                    <p>Bachelor of Science in Computer Science </p>
+                                    <ul>
+                                        <li>GPA: 3.88/4.0</li>
+                                        <li>IEEE-HKN Honor Society Member</li>
+                                        <li>Undergraduate Women in STEM Social Media Chair</li>
+                                        <li>Dean's List for five consecutive semesters</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" data-year="2018 - 2022">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">High School Diploma</h3>
+                                <h4 class="timeline-subtitle">WIndham High School</h4>
+                                <div class="timeline-details">
+                                    <p>Salutatorian</p>
+                                    <ul>
+                                        <li>GPA: 4.0/4.0</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Monica Agneta All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            // toggle for mobile nav menu
+            $('.burger').click(function() {
+                $('.nav-links').toggleClass('nav-active');
+                $('.burger').toggleClass('toggle');
+            });
+            
+            // timeline tab switching
+            $('.timeline-tab').click(function() {
+                const target = $(this).data('target');
+                
+                // change to active tab
+                $('.timeline-tab').removeClass('active');
+                $(this).addClass('active');
+                
+                // show only selected timeline
+                $('.timeline').removeClass('active');
+                $('.' + target + '-timeline').addClass('active');
+            });
+            
+            // item hover effect
+            $('.timeline-item').hover(
+                function() {
+                    $(this).addClass('active');
+                },
+                function() {
+                    $(this).removeClass('active');
+                }
+            );
+        });
+    </script>
+</body>
+</html>

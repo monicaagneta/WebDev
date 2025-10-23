@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monica Agneta | About Me</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jQuery CDN used for features-->
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Monica Agneta</div> <!-- web logo-->
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">About Me</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="experience.html">Experience</a></li>
+                </ul>
+                <div class="burger"> <!--nav menu becomes burger stack on small screens-->
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <div class="container">
+                <h1 class="section-title">About Me</h1>
+                <div class="about-content">
+                    <div class="profile-image">
+                        <div class="image-container">
+                            <img src="images/headshot.PNG" alt="Headshot of Monica Agneta">
+                        </div>
+                    </div>
+                    <div class="about-text">
+                        <h2>Hello, I'm <span class="highlight">Monica!</span></h2>
+                        <h3 class="profession">Computer Science Student</h3>
+                        <p class="intro-text">
+                            Welcome to my online resume! I am a curious and driven junior Computer Science student who loves to overcome challenges and develop technology that makes a positive difference. I thrive when I am learning and collaborating with others. Through my developer position at a research lab I became strongly skilled in Swift and iOS development, focusing on accessibility. My internship as a Deployment Engineer strengthened my ability to problem solve and communicate technical solutions to clients.
+                        </p>
+                        <p>
+                            I created this website to showcase my experiences, projects, and skills. Feel free to reach out to me with any questions or inquiries.
+                        </p>
+                        <div class="quick-info">
+                            <div class="info-item">
+                                <span class="info-label">Email:</span>
+                                <span class="info-value">monica.agneta@maine.edu</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Location:</span>
+                                <span class="info-value">Orono, Maine</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Phone:</span>
+                                <span class="info-value">+1 (201) 572-2022</span>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/monica-agneta/" class="social-link">LinkedIn</a>
+                            <a href="https://github.com/monicaagneta" class="social-link">GitHub</a>
+                            <a href="portfolio.html" class="social-link">Portfolio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Monica Agneta. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function() { // toggles nav when burger menu clicked on smaller screens
+            $('.burger').click(function() {
+                $('.nav-links').toggleClass('nav-active');
+                $('.burger').toggleClass('toggle');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monica Agneta | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- links for slick carousel jQuery plugin-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Monica Agneta</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">About Me</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="experience.html">Experience</a></li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="portfolio-section">
+            <div class="container">
+                <h1 class="section-title">My Portfolio</h1>
+                
+                <div class="project-carousel">
+                    <div class="project-slide">
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="images/watchapp.png" alt="Screenshot of fatigue tracking WatchOS app project start screen">
+                            </div>
+                            <div class="project-info">
+                                <h3>Project One</h3>
+                                <p class="project-category">WatchOS Application</p>
+                                <p class="project-description">
+                                    I developed a fatique tracking app designed for Apple Watch, focused on making self-monitoring quick and easy for the young users. The app features a clean and minimalistic interface that allows users to log their fatique levels with a few taps. The code is private due to the developmemt being for a fatigue tracking research project. The app key features include a homepage, several question pages, local notifications, and database connection.
+                                </p>
+                                <div class="project-links">
+                                    <a href="https://github.com/vemilab" class="project-link">Link</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-slide">
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="images/libraryapp.PNG" alt="Screenshot of personal library website project">
+                            </div>
+                            <div class="project-info">
+                                <h3>Project Two</h3>
+                                <p class="project-category">Personal Library Web Application</p>
+                                <p class="project-description">
+                                    I designed and built a personal library website to catalog my reading collection in an aesthetic interface. The site features a page for me to add books to my bookshelf with an upload feature, an about the reader page, and a separate page which allows users to view my bookshelf without the features to edit it.
+                                </p>
+                                <div class="project-links">
+                                    <a href="https://github.com/monicaagneta/WebDev/tree/main/Assignment3" class="project-link">Link</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-slide">
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="images/poppinapp.PNG" alt="Screenshot of Poppin' social media mobile app profile page">
+                            </div>
+                            <div class="project-info">
+                                <h3>Project Three</h3>
+                                <p class="project-category">Poppin' Mobile Application</p>
+                                <p class="project-description">
+                                    As part of a four-person development team, I helped create Poppin', a mobile web application where users can post about all types of their favorite media from books and movies to music and games. Each post includes a tag feature that categorizes the media type, allowing users to filter their feed and explore content based on their interests. I led development of the Profile Page, where each user can showcase their current favorite pieces of media.
+                                </p>
+                                <div class="project-links">
+                                    <a href="https://github.com/brett-j-palmer/WEBMB_Poppin" class="project-link">Link</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- displays skills -->
+                <div class="skills-section">
+                    <h2 class="sub-section-title">My Toolkit</h2>
+                    
+                    <div class="skills-container">
+                        <div class="skills-category">
+                            <h3>Hard Skills</h3>
+                            <ul class="skills-list" id="hardSkills">
+                                <li class="skill-item">Python</li>
+                                <li class="skill-item">Okta</li>
+                                <li class="skill-item">Swift/Swift UI</li>
+                                <li class="skill-item">C</li>
+                                <li class="skill-item">C++</li>
+                                <li class="skill-item">Java</li>
+                                <li class="skill-item">Version Control</li>
+                                <li class="skill-item">SQL</li>
+                                <li class="skill-item">Microsoft CRM</li>
+                                <li class="skill-item">Java</li>
+                                <li class="skill-item">HTML5</li>
+                                <li class="skill-item">SCSS</li>
+                                <li class="skill-item">JavaScript</li>
+                                <li class="skill-item">TypeScript</li>
+                            </ul>
+                            <!-- to add new hard skill-->
+                            <div class="add-skill">
+                                <input type="text" id="newHardSkill" placeholder="Add hard skill...">
+                                <button onclick="addSkill('hardSkills', 'newHardSkill')">Add</button>
+                            </div>
+                        </div>
+                        
+                        <div class="skills-category">
+                            <h3>Soft Skills</h3>
+                            <ul class="skills-list" id="softSkills">
+                                <li class="skill-item">Communication</li>
+                                <li class="skill-item">Teamwork</li>
+                                <li class="skill-item">Problem Solving</li>
+                                <li class="skill-item">Time Management</li>
+                                <li class="skill-item">Leadership</li>
+                                <li class="skill-item">Motivation</li>
+                                <li class="skill-item">Curiosity</li>
+                            </ul>
+                            <!-- to add new soft skill-->
+                            <div class="add-skill">
+                                <input type="text" id="newSoftSkill" placeholder="Add soft skill...">
+                                <button onclick="addSkill('softSkills', 'newSoftSkill')">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Monica Agneta. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            // toggle for mobile nav menu
+            $('.burger').click(function() {
+                $('.nav-links').toggleClass('nav-active');
+                $('.burger').toggleClass('toggle');
+            });
+            
+            // creates carousel to display projects
+            $('.project-carousel').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false
+                        }
+                    }
+                ]
+            });
+        });
+        
+        // function to add new skills
+        function addSkill(listId, inputId) {
+            const skillInput = document.getElementById(inputId);
+            const skillValue = skillInput.value.trim();
+            
+            if (skillValue) {
+                const skillsList = document.getElementById(listId);
+                const newSkill = document.createElement('li');
+                newSkill.className = 'skill-item';
+                newSkill.innerHTML = skillValue + '<span class="remove-skill" onclick="removeSkill(this)">×</span>';
+                skillsList.appendChild(newSkill);
+                skillInput.value = '';
+            }
+        }
+        
+        // function to remove added skill
+        function removeSkill(element) {
+            element.parentElement.remove();
+        }
+    </script>
+</body>
+</html>
